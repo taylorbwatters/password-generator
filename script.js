@@ -1,6 +1,5 @@
-const generateBtn = document.getElementById("generate");
-
-const randomPassword = document.getElementById("password");
+const generateButton = document.getElementById("generate");
+const passwordTextArea = document.getElementById("password");
 
 const uppercaseCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const lowercaseCharacters = "abcdefghijklmnopqrstuvwxyz";
@@ -8,7 +7,6 @@ const numericCharacters = "0123456789";
 const specialCharacters = "$&+,:;=?@#|'<>.-^*()%!";
 
 function generateRandomPassword() {
-
   let newPassword = "";
 
   const passwordLength = parseInt(window.prompt("Specify password length"));
@@ -18,7 +16,10 @@ function generateRandomPassword() {
       "Password needs to be between 8 and 128 characters. Would you like to try again?"
     );
 
-    if (shouldTryAgain) return generateRandomPassword();
+    if (shouldTryAgain) {
+      generateRandomPassword();
+      return 
+    }
   }
 
   const shouldIncludeLowercase = window.confirm("Should we include lowercase characters?");
@@ -39,10 +40,10 @@ function generateRandomPassword() {
     newPassword += char;
   }
 
-  randomPassword.textContent = newPassword;
+  passwordTextArea.textContent = newPassword;
 }
 
-generateBtn.addEventListener("click", generateRandomPassword);
+generateButton.addEventListener("click", generateRandomPassword);
 
 
 
